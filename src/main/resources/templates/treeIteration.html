@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Tree Iteration</title>
+</head>
+<body>
+	<h1>Trees as collection</h1>
+	<p th:text="'Raw: ' + ${treesAsCollection}" />
+	<ul>
+		<li th:each="t: ${treesAsCollection}"
+			th:text="'Common name: ' + ${t.commonName} + ' - Family: ' + ${t.family} + ' - Latin name: ' + ${t.genus} + ' ' + ${t.species}" />
+	</ul>
+
+	<h1>Trees as map:</h1>
+	<p th:text="'Raw: ' + ${treesAsMap}" />
+	<ul>
+		<li th:each="treeEntry: ${treesAsMap}"
+			th:text="'Entry is ' + ${treeEntry} + '/' + ${treeEntry.key} + ', ' +  ${treeEntry.value}" />
+	</ul>
+
+	<h1>Trees as collection with iteration status:</h1>
+	<p th:text="'Raw: ' + ${treesAsCollection}" />
+	<ul>
+		<li th:each="t, status: ${treesAsCollection}">
+			<p th:text="'Count: ' + ${status.count}" />
+			<p th:text="'Even: ' + ${status.even}" />
+			<p th:text="'First: ' + ${status.first}" />
+			<p th:text="'Number of Elements: ' + ${status.size}" />
+
+		</li>
+	</ul>
+</body>
+</html>
